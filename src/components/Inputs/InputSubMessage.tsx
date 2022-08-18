@@ -33,7 +33,7 @@ function InputSubMessage (props: PropTypes)
     props.reference.current = { setNormalSubMessage, setErrorSubMessage };
 
     return (
-        <p className={`${isErrorMessage ? 'text-red-700 font-medium' : 'text-[#A8A8A8] font-normal'} text-xs ${props.className ? props.className : ''}`}>{subMessage}</p>
+        <p className={`${isErrorMessage ? 'text-red-700 font-medium dark:text-red-400' : 'text-[#A8A8A8] font-normal'} text-xs ${props.className ? props.className : ''}`}>{subMessage}</p>
     );
 }
 

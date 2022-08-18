@@ -1,12 +1,13 @@
-import { ArrowLeft, ArrowsLeftRight, Bank, CaretDown, DownloadSimple, Eye, IconContext, IdentificationCard, Receipt, UploadSimple, UserCircle, Vault, X } from 'phosphor-react';
+import { ArrowLeft, ArrowsLeftRight, Bank, CaretDown, DownloadSimple, Eye, EyeSlash, IconContext, IdentificationCard, Receipt, UploadSimple, UserCircle, Vault, X } from 'phosphor-react';
 
-type IconName = 'ArrowLeft' | 'ArrowsLeftRight' | 'Bank' | 'DownloadSimple' | 'IdentificationCard' | 'Receipt' | 'UploadSimple' | 'UserCircle' | 'Vault' | 'CaretDown' | 'Eye' | 'X';
+type IconName = 'ArrowLeft' | 'ArrowsLeftRight' | 'Bank' | 'DownloadSimple' | 'IdentificationCard' | 'Receipt' | 'UploadSimple' | 'UserCircle' | 'Vault' | 'CaretDown' | 'Eye' | 'EyeSlash' | 'X';
 
 interface PropTypes
 {
     iconName: IconName;
     size?: number;
     color?: string;
+    weight?: boolean;
     onClick?: () => void;
 }
 
@@ -23,6 +24,7 @@ const icons =
     Vault: <Vault />,
     CaretDown: <CaretDown />,
     Eye: <Eye />,
+    EyeSlash: <EyeSlash />,
     // eslint-disable-next-line id-length
     X: <X />,
 };
@@ -41,6 +43,7 @@ function Icon (props: PropTypes)
                 {
                     color: props.color ? props.color : 'white',
                     size: props.size ? props.size : 32,
+                    weight: props.weight ? 'fill' : 'regular',
                     onClick: (event) => onClick (event)
                 }
             }>
