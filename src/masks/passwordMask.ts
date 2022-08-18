@@ -1,6 +1,6 @@
-function passwordMask (value: string)
+function birthdayMask (value: string)
 {
     return value.replace(/\D/g, '');
 }
 
-export { passwordMask };
+export { birthdayMask };

@@ -17,8 +17,10 @@ interface TransactionsWithDate
     [ date: string ]: TransactionObject[];
 }
 
-function organizeTransactions (transactions: any[])
+function organizeTransactions (transactionsParameter: any[])
 {
+    const transactions = Array.isArray(transactionsParameter) ? transactionsParameter : [ transactionsParameter ];
+
     const transactionsObject = {} as TransactionsWithDate;
 
     for (const transaction of transactions)

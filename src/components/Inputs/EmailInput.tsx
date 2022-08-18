@@ -2,7 +2,6 @@ import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage
 import { useRef, useState } from 'react';
 import { Input } from './Input';
 import { InputReferenceType } from './InputReferenceType';
-import { passwordMask } from '../../masks/passwordMask';
 
 interface PropTypes
 {
@@ -13,23 +12,20 @@ interface PropTypes
 
 function EmailInput (props: PropTypes)
 {
-    const minPasswordLength = 4;
-    const maxPasswordLength = 8;
-
     const [ value, setValue ] = useState('');
     const inputSubMessageRef = useRef({} as ReferenceInputSubMessageType);
 
     function emailInputOnChange (event: React.ChangeEvent<HTMLInputElement>)
     {
-        setValue(passwordMask(event.target.value));
+        setValue(event.target.value);
     }
 
     function isEmailValid ()
     {
-        const condition = value.length >= minPasswordLength && value.length <= maxPasswordLength;
+        const condition = (/^(\S+)@((?:(?:(?!-)[a-zA-Z0-9-]{1,62}[a-zA-Z0-9])\.)+[a-zA-Z0-9]{2,12})$/).test(value);
 
         if (condition) inputSubMessageRef.current.setNormalSubMessage('');
-        else inputSubMessageRef.current.setErrorSubMessage(`Favor digitar uma senha de ${minPasswordLength} a ${maxPasswordLength} dígitos`);
+        else inputSubMessageRef.current.setErrorSubMessage('Formato do email deve ser: \'email@provedor.extensao\'');
 
         return condition;
     }
@@ -38,7 +34,7 @@ function EmailInput (props: PropTypes)
 
     return (
         <div className={`${props?.className ? props.className : ''}`}>
-            <Input type="password" initialValue={value} maxLength={maxPasswordLength} placeholder={props.placeholder ? props.placeholder : 'Digite sua Senha'} InputOnChange={emailInputOnChange} />
+            <Input type="text" initialValue={value} maxLength={50} placeholder={props.placeholder ? props.placeholder : 'Digite seu Email'} InputOnChange={emailInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
         </div>
     );

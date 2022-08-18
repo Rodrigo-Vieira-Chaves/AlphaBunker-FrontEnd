@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .alpha-bunker-title{
+        @apply text-[#353535] dark:text-[#F7F7F7];
+    }
+
+    .alpha-bunker-link{
+        @apply text-[#353535] dark:text-[#A2A2A2];
+    }
+
+    .alpha-bunker-data-text{
+        @apply text-[#727272] dark:text-[#A2A2A2];
+    }
+}

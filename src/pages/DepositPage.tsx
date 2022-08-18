@@ -75,7 +75,7 @@ function DepositPage ()
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
             <DataBox className="mt-24" label={DataBoxLabels.DEPOSITO} >
-                <p className="mt-2 mb-2.5">Dados para depósito</p>
+                <p className="alpha-bunker-title mt-2 mb-2.5">Dados para depósito</p>
                 <div className="flex justify-between w-full">
                     <BranchInput className="w-28" value={branch} isDisabled={true} />
                     <AccountNumberInput className="w-28" value={account} isDisabled={true} />

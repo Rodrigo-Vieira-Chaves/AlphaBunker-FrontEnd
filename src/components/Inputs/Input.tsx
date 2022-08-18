@@ -8,7 +8,7 @@ interface PropTypes
     isDisabled?: boolean;
     placeholder?: string;
     autoComplete?: boolean;
-    InputOnChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    InputOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input (props: PropTypes)
@@ -21,7 +21,7 @@ function Input (props: PropTypes)
             maxLength={props.maxLength}
             readOnly={Boolean(props.isReadOnly)}
             disabled={Boolean(props.isDisabled)}
-            onChange={(event) => props.InputOnChange(event)}
+            onChange={props.InputOnChange}
             className={`w-full border-solid border border-[#D2D2D2] rounded placeholder:text-[#727272] 
                         placeholder:text-base disabled:bg-[#D2D2D2] disabled:text-[#727272] p-1 pl-2 
                         ${props.className ? props.className : ''}`}

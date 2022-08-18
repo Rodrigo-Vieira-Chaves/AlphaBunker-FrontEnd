@@ -2,7 +2,7 @@ import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage
 import { useRef, useState } from 'react';
 import { Input } from './Input';
 import { InputReferenceType } from './InputReferenceType';
-import { passwordMask } from '../../masks/passwordMask';
+import { birthdayMask } from '../../masks/passwordMask';
 
 interface PropTypes
 {
@@ -21,7 +21,7 @@ function PasswordInput (props: PropTypes)
 
     function passwordInputOnChange (event: React.ChangeEvent<HTMLInputElement>)
     {
-        setValue(passwordMask(event.target.value));
+        setValue(birthdayMask(event.target.value));
     }
 
     function isPasswordValid ()
@@ -34,7 +34,7 @@ function PasswordInput (props: PropTypes)
         return condition;
     }
 
-    if (props?.reference) props.reference.current = { value, isValid: isPasswordValid, setValue };
+    if (props?.reference) props.reference.current = { value, isValid: isPasswordValid, setValue, inputSubMessageRef };
 
     return (
         <div className={`${props?.className ? props.className : ''}`}>

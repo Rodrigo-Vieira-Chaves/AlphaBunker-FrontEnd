@@ -1,6 +1,7 @@
 import { DataBox, DataBoxLabels } from '../components/DataBoxes/DataBox';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import { AppBackground } from '../components/AppBackground';
 import { BoxBackGround } from '../components/DataBoxes/BoxBackGround';
 import { Icon } from '../components/Icon';
 import { MainMenuBackGround } from '../components/MainMenu/MainMenuBackGround';
@@ -55,7 +56,7 @@ function ProfilePage ()
 
     return (
         userInfo.isLogged
-            ? <div className="flex flex-col items-center bg-[#EAEDF0] h-screen">
+            ? <AppBackground>
                 <MainMenuBackGround>
                     <div className="w-full pl-6">
                         <Icon iconName="ArrowLeft" onClick={() => navigate('/main/extract')} />
@@ -75,7 +76,7 @@ function ProfilePage ()
                         {accountBoxes}
                     </div>
                 </DataBox>
-            </div>
+            </AppBackground>
             : <Navigate to="/" replace />
     );
 }

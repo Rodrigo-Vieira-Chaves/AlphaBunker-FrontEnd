@@ -2,7 +2,8 @@ import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage
 import { useRef, useState } from 'react';
 import { Input } from './Input';
 import { InputReferenceType } from './InputReferenceType';
-import { passwordMask } from '../../masks/passwordMask';
+import { birthdayMask } from '../../masks/birthdayMask';
+import { isDateValid } from '../../utils/isDateValid';
 
 interface PropTypes
 {
@@ -13,23 +14,22 @@ interface PropTypes
 
 function BirthdayInput (props: PropTypes)
 {
-    const minPasswordLength = 4;
-    const maxPasswordLength = 8;
+    const maxBirthdayLength = 10;
 
     const [ value, setValue ] = useState('');
     const inputSubMessageRef = useRef({} as ReferenceInputSubMessageType);
 
     function birthdayInputOnChange (event: React.ChangeEvent<HTMLInputElement>)
     {
-        setValue(passwordMask(event.target.value));
+        setValue(birthdayMask(event.target.value));
     }
 
     function isBirthdayValid ()
     {
-        const condition = value.length >= minPasswordLength && value.length <= maxPasswordLength;
+        const condition = value.length === maxBirthdayLength && isDateValid(value);
 
         if (condition) inputSubMessageRef.current.setNormalSubMessage('');
-        else inputSubMessageRef.current.setErrorSubMessage(`Favor digitar uma senha de ${minPasswordLength} a ${maxPasswordLength} dígitos`);
+        else inputSubMessageRef.current.setErrorSubMessage('Favor digitar uma data de nascimento válida');
 
         return condition;
     }
@@ -38,7 +38,8 @@ function BirthdayInput (props: PropTypes)
 
     return (
         <div className={`${props?.className ? props.className : ''}`}>
-            <Input type="password" initialValue={value} maxLength={maxPasswordLength} placeholder={props.placeholder ? props.placeholder : 'Digite sua Senha'} InputOnChange={birthdayInputOnChange} />
+            <Input type="text" initialValue={value} maxLength={maxBirthdayLength}
+                placeholder={props.placeholder ? props.placeholder : 'Digite sua data de nascimento'} InputOnChange={birthdayInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
         </div>
     );

@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { AppBackground } from '../components/AppBackground';
 import { MainMenu } from '../components/MainMenu/MainMenu';
 import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
 import { useContext } from 'react';
@@ -9,10 +10,10 @@ function MainPage ()
 
     return (
         userInfo.isLogged
-            ? <div className="flex flex-col items-center bg-[#EAEDF0] h-screen">
+            ? <AppBackground>
                 <MainMenu />
                 <Outlet />
-            </div>
+            </AppBackground>
             : <Navigate to="/" replace />
     );
 }

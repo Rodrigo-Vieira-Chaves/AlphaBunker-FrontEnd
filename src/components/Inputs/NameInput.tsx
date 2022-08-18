@@ -2,7 +2,7 @@ import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage
 import { useRef, useState } from 'react';
 import { Input } from './Input';
 import { InputReferenceType } from './InputReferenceType';
-import { passwordMask } from '../../masks/passwordMask';
+import { nameMask } from '../../masks/nameMask';
 
 interface PropTypes
 {
@@ -13,23 +13,20 @@ interface PropTypes
 
 function NameInput (props: PropTypes)
 {
-    const minPasswordLength = 4;
-    const maxPasswordLength = 8;
-
     const [ value, setValue ] = useState('');
     const inputSubMessageRef = useRef({} as ReferenceInputSubMessageType);
 
     function nameInputOnChange (event: React.ChangeEvent<HTMLInputElement>)
     {
-        setValue(passwordMask(event.target.value));
+        setValue(nameMask(event.target.value));
     }
 
     function isNameValid ()
     {
-        const condition = value.length >= minPasswordLength && value.length <= maxPasswordLength;
+        const condition = (/^[A-ZÀ-Ÿ][A-zÀ-ÿ']+\s([A-zÀ-ÿ']\s?)*[A-ZÀ-Ÿ][A-zÀ-ÿ']+$/).test(value);
 
         if (condition) inputSubMessageRef.current.setNormalSubMessage('');
-        else inputSubMessageRef.current.setErrorSubMessage(`Favor digitar uma senha de ${minPasswordLength} a ${maxPasswordLength} dígitos`);
+        else inputSubMessageRef.current.setErrorSubMessage('Nome do usuário deve possuir nome e sobrenome e não pode ter números ou caracteres especiais');
 
         return condition;
     }
@@ -38,7 +35,7 @@ function NameInput (props: PropTypes)
 
     return (
         <div className={`${props?.className ? props.className : ''}`}>
-            <Input type="password" initialValue={value} maxLength={maxPasswordLength} placeholder={props.placeholder ? props.placeholder : 'Digite sua Senha'} InputOnChange={nameInputOnChange} />
+            <Input type="text" initialValue={value} maxLength={50} placeholder={props.placeholder ? props.placeholder : 'Digite seu Nome'} InputOnChange={nameInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
         </div>
     );

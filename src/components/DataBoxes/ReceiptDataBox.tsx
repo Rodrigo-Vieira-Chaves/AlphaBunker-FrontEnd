@@ -26,19 +26,19 @@ function ReceiptDataBox (props: PropTypes)
 
     return (
         <BoxBackGround>
-            <p className="text-[#727272]">Tipo: {transactionType[props.type]}</p>
-            <p className="mt-4">Data: {formatDateWithTime(props.createdAt)}</p>
+            <p className="alpha-bunker-data-text">Tipo: {transactionType[props.type]}</p>
+            <p className="text-[#A2A2A2] dark:text-[#727272] mt-4">Data: {formatDateWithTime(props.createdAt)}</p>
             {
                 props.destinyAccount &&
                 <div className="flex flex-col justify-center items-start w-full mt-4">
-                    <p className="text-[#727272]">Dados de destino:</p>
-                    <p className="ml-4">CPF: {props.destinyAccount.clientCPF}</p>
-                    <p className="ml-4">Agência: {branch}</p>
-                    <p className="ml-4">Conta: {account}</p>
+                    <p className="alpha-bunker-data-text">Dados de destino:</p>
+                    <p className="text-[#A2A2A2] dark:text-[#727272] ml-4">CPF: {props.destinyAccount.clientCPF}</p>
+                    <p className="text-[#A2A2A2] dark:text-[#727272] ml-4">Agência: {branch}</p>
+                    <p className="text-[#A2A2A2] dark:text-[#727272] ml-4">Conta: {account}</p>
                 </div>
             }
             <div className="flex justify-between items-center w-full mt-4">
-                <p className="text-[#727272]">Valor</p>
+                <p className="alpha-bunker-data-text">Valor</p>
                 <p className={`${props.ammount >= 0 ? 'text-[#53D496]' : 'text-[#FF5959]'} font-bold`}>{line}</p>
             </div>
         </BoxBackGround>

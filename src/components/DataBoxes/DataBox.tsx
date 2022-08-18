@@ -39,7 +39,7 @@ interface PropTypes{
 function DataBox (props: PropTypes)
 {
     return (
-        <div className={`flex flex-col bg-white px-4 py-3 rounded-lg w-4/5 ${props.className ? props.className : ''}`}>
+        <div className={`flex flex-col bg-white dark:bg-[#23292C] dark:border dark:border-[#424245] px-4 py-3 rounded-lg w-4/5 ${props.className ? props.className : ''}`}>
             <div className="flex justify-start">
                 {chooseIcon(props.label)}
                 <p className={`text-[#C98E26] font-medium text-base ml-2.5 ${props.labelMarginBottom ? props.labelMarginBottom : ''}`}>{props.label}</p>
