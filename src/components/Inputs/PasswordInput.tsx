@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { birthdayMask } from '../../masks/passwordMask';
 
@@ -37,10 +38,10 @@ function PasswordInput (props: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isPasswordValid, setValue, inputSubMessageRef };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="password" initialValue={value} maxLength={maxPasswordLength} placeholder={props.placeholder ? props.placeholder : 'Digite sua Senha'} InputOnChange={passwordInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
-        </div>
+        </InputBox>
     );
 }
 

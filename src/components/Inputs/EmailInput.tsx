@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 
 interface PropTypes
@@ -33,10 +34,10 @@ function EmailInput (props: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isEmailValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" initialValue={value} maxLength={50} placeholder={props.placeholder ? props.placeholder : 'Digite seu Email'} InputOnChange={emailInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
-        </div>
+        </InputBox>
     );
 }
 

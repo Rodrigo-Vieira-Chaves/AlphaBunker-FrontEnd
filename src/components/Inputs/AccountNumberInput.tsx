@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { accountNumberMask } from '../../masks/accountNumberMask';
 
@@ -36,10 +37,10 @@ function AccountNumberInput (props?: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isAccountNumberValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" isDisabled={props?.isDisabled} initialValue={value} maxLength={accountNumberLength} placeholder="Conta" InputOnChange={AccountNumberInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} initialSubMessage="Conta" />
-        </div>
+        </InputBox>
     );
 }
 

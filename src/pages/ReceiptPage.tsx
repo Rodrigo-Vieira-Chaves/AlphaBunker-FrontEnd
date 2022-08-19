@@ -11,11 +11,11 @@ function ReceiptPage ()
     const userInfo = useContext(UserLoggedDataContext);
 
     return (
-        <div className="flex flex-col gap-4 justify-center items-center w-full mt-16">
-            <div className="w-3/4">
+        <div className="flex flex-col gap-4 justify-center items-center w-full sm:w-1/2 mt-16">
+            <div className="w-4/5 sm:w-full">
                 <Icon iconName="ArrowLeft" color="black" onClick={() => navigate('/main/extract')} />
             </div>
-            <DataBox label={DataBoxLabels.COMPROVANTE_DE_TRANSAÇAO} labelMarginBottom="mb-6">
+            <DataBox className="sm:w-full" label={DataBoxLabels.COMPROVANTE_DE_TRANSAÇAO} labelMarginBottom="mb-6">
                 <ReceiptDataBox type={userInfo.lastTransaction.type} ammount={userInfo.lastTransaction.ammount}
                     createdAt={userInfo.lastTransaction.createdAt} destinyAccount={userInfo.lastTransaction.destination} />
             </DataBox>

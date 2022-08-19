@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { branchMask } from '../../masks/branchMask';
 
@@ -36,10 +37,10 @@ function BranchInput (props?: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isBranchValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" isDisabled={props?.isDisabled} initialValue={value} maxLength={branchLength} placeholder="Agência" InputOnChange={BranchInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} initialSubMessage="Agência" />
-        </div>
+        </InputBox>
     );
 }
 

@@ -59,8 +59,8 @@ function LoginPage ()
                 description={modalData.description} onClick={modalData.onClick} />
             <AlphaBankLogo />
             <h1 className="alpha-bunker-title font-medium text-xl mt-14 mb-6">Login</h1>
-            <CPFInput className="mb-5 w-full" reference={cpfInputRef} />
-            <PasswordInput className="mb-6 w-full" reference={passwordInputRef} />
+            <CPFInput className="mb-5" reference={cpfInputRef} />
+            <PasswordInput className="mb-6" reference={passwordInputRef} />
             <Button className="mb-2" label="Entrar" onClick={executeLogin} />
             <NavLink className="alpha-bunker-link text-sm" to={'/register'}>Crie sua conta</NavLink>
         </AppBackground>

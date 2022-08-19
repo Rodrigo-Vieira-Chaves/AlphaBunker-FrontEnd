@@ -109,13 +109,13 @@ function TransferPage ()
                 description={modalData.description} onClick={modalData.onClick} />
             <DataBox className="mt-10 overflow-y-scroll" label={DataBoxLabels.TRANSFERÊNCIA} >
                 <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Origem</p>
-                <div className="flex justify-between w-full">
+                <div className="w-full flex justify-between items-center">
                     <BranchInput className="w-28" value={branch} isDisabled={true} />
                     <AccountNumberInput className="w-28" value={account} isDisabled={true} />
                 </div>
                 <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Destino</p>
                 <CPFInput placeholder="Digite CPF Destino" reference={cpfInputRef} />
-                <div className="flex justify-between w-full mt-1">
+                <div className="w-full flex justify-between items-center mt-1">
                     <BranchInput className="w-28" isDisabled={false} reference={branchInputRef} />
                     <AccountNumberInput className="w-28" isDisabled={false} reference={accountNumberInputRef} />
                 </div>

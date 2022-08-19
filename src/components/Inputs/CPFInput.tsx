@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { cpfMask } from '../../masks/cpfMask';
 
@@ -35,10 +36,10 @@ function CPFInput (props?: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isCPFValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" initialValue={value} maxLength={cpfLength} placeholder={props?.placeholder ? props.placeholder : 'Digite seu CPF'} InputOnChange={CPFInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
-        </div>
+        </InputBox>
     );
 }
 

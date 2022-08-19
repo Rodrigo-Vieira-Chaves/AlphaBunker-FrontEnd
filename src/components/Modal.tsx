@@ -31,7 +31,7 @@ function Modal (props: ModalData)
                 <div className="absolute left-0 top-0 w-screen h-screen bg-black/50">
                     <div className=
                         {
-                            `flex flex-col justify-center items-center bg-white text-lg rounded-t-3xl p-5
+                            `flex flex-col justify-center items-center sm:w-1/4 sm:m-auto bg-white dark:bg-[#23292C] dark:border dark:border-[#424245] alpha-bunker-title text-lg rounded-t-3xl p-5
                             transform transition-all translate-y-3/4 ease-in-out duration-1000 ${props.className ? props.className : ''}`
                         }>
                         <div className="flex justify-between items-center w-full">

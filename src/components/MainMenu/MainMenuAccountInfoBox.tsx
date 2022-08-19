@@ -16,13 +16,13 @@ function MainMenuAccountInfoBox ()
     }
 
     return (
-        <div className="absolute top-[80%] flex flex-col bg-white rounded-[10px] w-[85%] pt-2 pb-3.5 px-4 shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
+        <div className="absolute top-[80%] flex flex-col bg-white rounded-[10px] w-[85%] h-20 pt-2 pb-3.5 px-4 shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
             <div className="flex justify-center gap-3.5">
                 <p className="text-[#C98E26] font-medium text-sm">{`Agência: ${branch}`}</p>
                 <p className="text-[#C98E26] font-medium text-sm">{`Conta: ${account}`}</p>
                 {/* <Icon iconName="CaretDown" size={24} color="#777777" /> */}
             </div>
-            <div className="flex justify-start items-center ml-3 gap-1.5">
+            <div className="flex justify-start sm:justify-center items-center ml-3 gap-1.5">
                 {
                     showBalance
                         ? <Icon iconName="Eye" size={20} color="#777777" weight={true} onClick={changeShowBalance} />

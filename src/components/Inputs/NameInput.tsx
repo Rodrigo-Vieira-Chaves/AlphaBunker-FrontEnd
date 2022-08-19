@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { nameMask } from '../../masks/nameMask';
 
@@ -34,10 +35,10 @@ function NameInput (props: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isNameValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" initialValue={value} maxLength={50} placeholder={props.placeholder ? props.placeholder : 'Digite seu Nome'} InputOnChange={nameInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef} />
-        </div>
+        </InputBox>
     );
 }
 

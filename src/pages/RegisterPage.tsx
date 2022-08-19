@@ -82,12 +82,12 @@ function RegisterPage ()
                 description={modalData.description} onClick={modalData.onClick} />
             <AlphaBankLogo />
             <h1 className="alpha-bunker-title font-medium text-xl mt-3 mb-7">Crie sua conta</h1>
-            <NameInput className="mb-5 w-full" reference={nameInputRef} />
-            <BirthdayInput className="mb-5 w-full" reference={birthdayInputRef} />
-            <CPFInput className="mb-5 w-full" reference={cpfInputRef} />
-            <EmailInput className="mb-5 w-full" reference={emailInputRef} />
-            <PasswordInput className="mb-5 w-full" reference={passwordInputRef} />
-            <PasswordInput className="mb-6 w-full" placeholder="Confirme sua Senha" reference={passwordConfirmationInputRef} />
+            <NameInput className="mb-5" reference={nameInputRef} />
+            <BirthdayInput className="mb-5" reference={birthdayInputRef} />
+            <CPFInput className="mb-5" reference={cpfInputRef} />
+            <EmailInput className="mb-5" reference={emailInputRef} />
+            <PasswordInput className="mb-5" reference={passwordInputRef} />
+            <PasswordInput className="mb-6" placeholder="Confirme sua Senha" reference={passwordConfirmationInputRef} />
             <Button className="mb-2" label="Cadastrar" onClick={executeRegistration}></Button>
             <NavLink className="alpha-bunker-link text-sm" to={'/'}>Entrar</NavLink>
         </AppBackground>

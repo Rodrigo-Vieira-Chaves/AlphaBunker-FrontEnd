@@ -1,6 +1,7 @@
 import { InputSubMessage, ReferenceInputSubMessageType } from './InputSubMessage';
 import { useRef, useState } from 'react';
 import { Input } from './Input';
+import { InputBox } from './InputBox';
 import { InputReferenceType } from './InputReferenceType';
 import { currencyMask } from '../../masks/currencyMask';
 
@@ -38,10 +39,10 @@ function CurrencyInput (props?: PropTypes)
     if (props?.reference) props.reference.current = { value, isValid: isCurrencyValid, setValue };
 
     return (
-        <div className={`${props?.className ? props.className : ''}`}>
+        <InputBox className={`${props?.className ? props.className : ''}`}>
             <Input type="text" isDisabled={props?.isDisabled} initialValue={value} maxLength={currencyLength} placeholder="Valor" InputOnChange={CurrencyInputOnChange} />
             <InputSubMessage reference={inputSubMessageRef}/>
-        </div>
+        </InputBox>
     );
 }
 

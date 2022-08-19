@@ -33,7 +33,7 @@ function makeTransactionComponent (transaction: TransactionObject)
 
 function ExtractDataComponent (props: PropTypes)
 {
-    if (props.statements.errorMessage || !props.statements.transactions) return props.statements.errorMessage;
+    if (props.statements.errorMessage || !props.statements.transactions) return <p className="dark:text-[#F7F7F7]">{props.statements.errorMessage}</p>;
 
     return Object.keys(props.statements.transactions).map((date) => (
         <ul key={date} className={`bg-[#F3F9F9] dark:bg-[#23292C] p-1 pr-2.5 rounded ${props.className ? props.className : ''}`}>
