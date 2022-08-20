@@ -5,6 +5,7 @@ import { AccountNumberInput } from '../components/Inputs/AccountNumberInput';
 import { BranchInput } from '../components/Inputs/BranchInput';
 import { Button } from '../components/Button';
 import { CurrencyInput } from '../components/Inputs/CurrencyInput';
+import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
 import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
@@ -81,14 +82,16 @@ function WithdrawPage ()
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
             <DataBox className="mt-24" label={DataBoxLabels.SAQUE} >
-                <p className="alpha-bunker-title mt-2 mb-2.5">Dados para saque</p>
-                <div className="flex justify-between w-full">
-                    <BranchInput className="w-28" value={branch} isDisabled={true} />
-                    <AccountNumberInput className="w-28" value={account} isDisabled={true} />
-                </div>
-                <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
-                <PasswordInput className="mt-5" reference={passwordInputRef} />
-                <Button className="mt-4" label="Sacar" onClick={verifyCurrencyAndPasswordValue}/>
+                <FormsBox>
+                    <p className="alpha-bunker-title mt-2 mb-2.5">Dados para saque</p>
+                    <div className="flex justify-between w-full">
+                        <BranchInput className="w-28" value={branch} isDisabled={true} />
+                        <AccountNumberInput className="w-28" value={account} isDisabled={true} />
+                    </div>
+                    <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
+                    <PasswordInput className="mt-5" reference={passwordInputRef} />
+                    <Button className="mt-4" label="Sacar" onClick={verifyCurrencyAndPasswordValue}/>
+                </FormsBox>
             </DataBox>
         </>
     );

@@ -5,6 +5,7 @@ import { AlphaBankLogo } from '../components/AlphaBankLogo';
 import { AppBackground } from '../components/AppBackground';
 import { Button } from '../components/Button';
 import { CPFInput } from '../components/Inputs/CPFInput';
+import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
 import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
@@ -57,12 +58,14 @@ function LoginPage ()
         <AppBackground className="relative p-14 pt-24">
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
-            <AlphaBankLogo />
-            <h1 className="alpha-bunker-title font-medium text-xl mt-14 mb-6">Login</h1>
-            <CPFInput className="mb-5" reference={cpfInputRef} />
-            <PasswordInput className="mb-6" reference={passwordInputRef} />
-            <Button className="mb-2" label="Entrar" onClick={executeLogin} />
-            <NavLink className="alpha-bunker-link text-sm" to={'/register'}>Crie sua conta</NavLink>
+            <FormsBox>
+                <AlphaBankLogo />
+                <h1 className="alpha-bunker-title font-medium text-xl mt-14 mb-6">Login</h1>
+                <CPFInput className="mb-5" reference={cpfInputRef} />
+                <PasswordInput className="mb-6" reference={passwordInputRef} />
+                <Button className="mb-2" label="Entrar" onClick={executeLogin} />
+                <NavLink className="alpha-bunker-link text-sm" to={'/register'}>Crie sua conta</NavLink>
+            </FormsBox>
         </AppBackground>
     );
 }

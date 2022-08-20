@@ -6,6 +6,7 @@ import { BirthdayInput } from '../components/Inputs/BirthdayInput';
 import { Button } from '../components/Button';
 import { CPFInput } from '../components/Inputs/CPFInput';
 import { EmailInput } from '../components/Inputs/EmailInput';
+import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { NameInput } from '../components/Inputs/NameInput';
 import { NavLink } from 'react-router-dom';
@@ -80,16 +81,18 @@ function RegisterPage ()
         <AppBackground className="p-14 pt-9 overflow-y-auto">
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
-            <AlphaBankLogo />
-            <h1 className="alpha-bunker-title font-medium text-xl mt-3 mb-7">Crie sua conta</h1>
-            <NameInput className="mb-5" reference={nameInputRef} />
-            <BirthdayInput className="mb-5" reference={birthdayInputRef} />
-            <CPFInput className="mb-5" reference={cpfInputRef} />
-            <EmailInput className="mb-5" reference={emailInputRef} />
-            <PasswordInput className="mb-5" reference={passwordInputRef} />
-            <PasswordInput className="mb-6" placeholder="Confirme sua Senha" reference={passwordConfirmationInputRef} />
-            <Button className="mb-2" label="Cadastrar" onClick={executeRegistration}></Button>
-            <NavLink className="alpha-bunker-link text-sm" to={'/'}>Entrar</NavLink>
+            <FormsBox>
+                <AlphaBankLogo />
+                <h1 className="alpha-bunker-title font-medium text-xl mt-3 mb-7">Crie sua conta</h1>
+                <NameInput className="mb-5" reference={nameInputRef} />
+                <BirthdayInput className="mb-5" reference={birthdayInputRef} />
+                <CPFInput className="mb-5" reference={cpfInputRef} />
+                <EmailInput className="mb-5" reference={emailInputRef} />
+                <PasswordInput className="mb-5" reference={passwordInputRef} />
+                <PasswordInput className="mb-6" placeholder="Confirme sua Senha" reference={passwordConfirmationInputRef} />
+                <Button className="mb-2" label="Cadastrar" onClick={executeRegistration}></Button>
+                <NavLink className="alpha-bunker-link text-sm" to={'/'}>Entrar</NavLink>
+            </FormsBox>
         </AppBackground>
     );
 }

@@ -6,6 +6,7 @@ import { BranchInput } from '../components/Inputs/BranchInput';
 import { Button } from '../components/Button';
 import { CPFInput } from '../components/Inputs/CPFInput';
 import { CurrencyInput } from '../components/Inputs/CurrencyInput';
+import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
 import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
@@ -108,20 +109,22 @@ function TransferPage ()
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
             <DataBox className="mt-10 overflow-y-scroll" label={DataBoxLabels.TRANSFERÊNCIA} >
-                <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Origem</p>
-                <div className="w-full flex justify-between items-center">
-                    <BranchInput className="w-28" value={branch} isDisabled={true} />
-                    <AccountNumberInput className="w-28" value={account} isDisabled={true} />
-                </div>
-                <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Destino</p>
-                <CPFInput placeholder="Digite CPF Destino" reference={cpfInputRef} />
-                <div className="w-full flex justify-between items-center mt-1">
-                    <BranchInput className="w-28" isDisabled={false} reference={branchInputRef} />
-                    <AccountNumberInput className="w-28" isDisabled={false} reference={accountNumberInputRef} />
-                </div>
-                <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
-                <PasswordInput className="mt-2" reference={passwordInputRef} />
-                <Button className="mt-4" label="Transferir" onClick={verifyInputValues}/>
+                <FormsBox>
+                    <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Origem</p>
+                    <div className="w-full flex justify-between items-center">
+                        <BranchInput className="w-28" value={branch} isDisabled={true} />
+                        <AccountNumberInput className="w-28" value={account} isDisabled={true} />
+                    </div>
+                    <p className="alpha-bunker-title mt-1 mb-2.5 text-sm">Destino</p>
+                    <CPFInput placeholder="Digite CPF Destino" reference={cpfInputRef} />
+                    <div className="w-full flex justify-between items-center mt-1">
+                        <BranchInput className="w-28" isDisabled={false} reference={branchInputRef} />
+                        <AccountNumberInput className="w-28" isDisabled={false} reference={accountNumberInputRef} />
+                    </div>
+                    <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
+                    <PasswordInput className="mt-2" reference={passwordInputRef} />
+                    <Button className="mt-4" label="Transferir" onClick={verifyInputValues}/>
+                </FormsBox>
             </DataBox>
         </>
     );

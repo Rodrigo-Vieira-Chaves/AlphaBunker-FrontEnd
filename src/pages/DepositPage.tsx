@@ -5,6 +5,7 @@ import { AccountNumberInput } from '../components/Inputs/AccountNumberInput';
 import { BranchInput } from '../components/Inputs/BranchInput';
 import { Button } from '../components/Button';
 import { CurrencyInput } from '../components/Inputs/CurrencyInput';
+import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
 import { makeDeposit } from '../apiCalls/makeDeposit';
@@ -75,13 +76,15 @@ function DepositPage ()
             <Modal reference={modalRef} title={modalData.title} isErrorModal={modalData.isErrorModal} confirmButtonLabel={modalData.confirmButtonLabel}
                 description={modalData.description} onClick={modalData.onClick} />
             <DataBox className="mt-24" label={DataBoxLabels.DEPOSITO} >
-                <p className="alpha-bunker-title mt-2 mb-2.5">Dados para depósito</p>
-                <div className="flex justify-between w-full">
-                    <BranchInput className="w-28" value={branch} isDisabled={true} />
-                    <AccountNumberInput className="w-28" value={account} isDisabled={true} />
-                </div>
-                <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
-                <Button className="mt-4" label="Depositar" onClick={verifyCurrencyValue}/>
+                <FormsBox>
+                    <p className="alpha-bunker-title mt-2 mb-2.5">Dados para depósito</p>
+                    <div className="flex justify-between w-full">
+                        <BranchInput className="w-28" value={branch} isDisabled={true} />
+                        <AccountNumberInput className="w-28" value={account} isDisabled={true} />
+                    </div>
+                    <CurrencyInput className="mt-4" value="0.00" reference={currencyInputRef} />
+                    <Button className="mt-4" label="Depositar" onClick={verifyCurrencyValue}/>
+                </FormsBox>
             </DataBox>
         </>
     );
