@@ -1,4 +1,5 @@
-import { UserLoggedDataProps } from '../providers/UserLoggedDataProvider';
+import { UserDataProps } from '../providers/UserDataProvider';
+import { checkIfTokenIsExpired } from '../utils/checkIfTokenIsExpired';
 
 interface DestinationAccount
 {
@@ -12,7 +13,7 @@ interface DestinationAccount
     }
 }
 
-async function makeTransfer (ammount: number, userInfo: UserLoggedDataProps, destination: DestinationAccount, password: string)
+async function makeTransfer (ammount: number, userInfo: UserDataProps, destination: DestinationAccount, password: string)
 {
     const body =
     {
@@ -36,12 +37,14 @@ async function makeTransfer (ammount: number, userInfo: UserLoggedDataProps, des
         'http://localhost:8000/makeTransfer',
         {
             method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.userLogged.token}` },
             body: JSON.stringify(body)
         }
     );
 
     const responseJson = await fetchResponse.json();
+
+    checkIfTokenIsExpired(responseJson.message, userInfo);
 
     return responseJson;
 }

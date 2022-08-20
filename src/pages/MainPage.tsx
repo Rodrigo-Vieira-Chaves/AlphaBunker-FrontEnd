@@ -1,12 +1,12 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { AppBackground } from '../components/AppBackground';
 import { MainMenu } from '../components/MainMenu/MainMenu';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { useContext } from 'react';
 
 function MainPage ()
 {
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     return (
         userInfo.isLogged

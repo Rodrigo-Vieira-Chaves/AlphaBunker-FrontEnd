@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { Icon } from '../Icon';
-import { UserLoggedDataContext } from '../../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../../providers/UserDataProvider';
 
 function MainMenuAccountInfoBox ()
 {
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
     const [ showBalance, setShowBalance ] = useState(true);
 
     const branch = `${userInfo.userLogged.account.branch}-${userInfo.userLogged.account.branchDigit}`;
@@ -32,7 +32,7 @@ function MainMenuAccountInfoBox ()
                     <p className="text-[#338896] font-bold text-2xl">
                         {
                             showBalance
-                                ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(userInfo.userLogged.account.balance)
+                                ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(userInfo.userLogged.account.balance as number)
                                     .replace('R$', '') : '****,**'
                         }</p>
                     <p className="text-[#3FA7B8] font-bold text-sm">R$</p>

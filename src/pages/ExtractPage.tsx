@@ -1,7 +1,7 @@
 import { DataBox, DataBoxLabels } from '../components/DataBoxes/DataBox';
 import { useContext, useEffect, useState } from 'react';
 import { ExtractDataBox } from '../components/DataBoxes/ExtractDataBox';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { formatDate } from '../utils/formatDate';
 import { getStatements } from '../apiCalls/getStatements';
 
@@ -36,7 +36,7 @@ function organizeTransactions (transactionsParameter: any[])
 
 function ExtractPage ()
 {
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
     const [ transactions, setTransactions ] = useState({} as { errorMessage?: string, transactions: TransactionsWithDate });
 
     function prepareStatementObject (response: any)

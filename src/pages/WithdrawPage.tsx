@@ -8,14 +8,14 @@ import { CurrencyInput } from '../components/Inputs/CurrencyInput';
 import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { makeWithdraw } from '../apiCalls/makeWithdraw';
 import { useNavigate } from 'react-router-dom';
 
 function WithdrawPage ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     const modalRef = useRef({} as ModalReferenceType);
     const currencyInputRef = useRef({} as InputReferenceType);
@@ -51,7 +51,7 @@ function WithdrawPage ()
         currencyInputRef.current.setValue('0.00');
         passwordInputRef.current.setValue('');
 
-        userInfo.updateUserInfo();
+        userInfo.updateUserLogged();
         userInfo.setLastTransaction(withdrawResponse.data);
 
         navigate('/main/receipt');

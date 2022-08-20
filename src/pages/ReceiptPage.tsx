@@ -1,14 +1,14 @@
 import { DataBox, DataBoxLabels } from '../components/DataBoxes/DataBox';
 import { Icon } from '../components/Icon';
 import { ReceiptDataBox } from '../components/DataBoxes/ReceiptDataBox';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function ReceiptPage ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     return (
         <div className="flex flex-col gap-4 justify-center items-center w-full sm:w-1/2 mt-16">

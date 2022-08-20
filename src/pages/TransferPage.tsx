@@ -9,14 +9,14 @@ import { CurrencyInput } from '../components/Inputs/CurrencyInput';
 import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { makeTransfer } from '../apiCalls/makeTransfer';
 import { useNavigate } from 'react-router-dom';
 
 function TransferPage ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     const modalRef = useRef({} as ModalReferenceType);
     const currencyInputRef = useRef({} as InputReferenceType);
@@ -73,7 +73,7 @@ function TransferPage ()
         accountNumberInputRef.current.setValue('');
         cpfInputRef.current.setValue('');
 
-        userInfo.updateUserInfo();
+        userInfo.updateUserLogged();
 
         transferResponse.data.destination = transferResponse.echo.destination;
         userInfo.setLastTransaction(transferResponse.data);

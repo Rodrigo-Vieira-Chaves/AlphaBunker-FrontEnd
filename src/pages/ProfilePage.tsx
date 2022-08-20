@@ -5,13 +5,13 @@ import { AppBackground } from '../components/AppBackground';
 import { BoxBackGround } from '../components/DataBoxes/BoxBackGround';
 import { Icon } from '../components/Icon';
 import { MainMenuBackGround } from '../components/MainMenu/MainMenuBackGround';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { getClientAccounts } from '../apiCalls/getClientAccounts';
 
 function ProfilePage ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
     const [ accountBoxes, setAccountBoxes ] = useState([] as JSX.Element[]);
 
     function makeAccountBoxes (accountsArray: any[])
@@ -39,7 +39,7 @@ function ProfilePage ()
 
     async function getAllClientAccounts ()
     {
-        const response = await getClientAccounts(userInfo.userLogged.client.clientID);
+        const response = await getClientAccounts(userInfo);
 
         let accountsArray = [] as any[];
 

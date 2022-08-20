@@ -1,6 +1,7 @@
-import { UserLoggedDataProps } from '../providers/UserLoggedDataProvider';
+import { UserDataProps } from '../providers/UserDataProvider';
+import { checkIfTokenIsExpired } from '../utils/checkIfTokenIsExpired';
 
-async function makeWithdraw (ammount: number, userInfo: UserLoggedDataProps, password: string)
+async function makeWithdraw (ammount: number, userInfo: UserDataProps, password: string)
 {
     const body =
     {
@@ -23,12 +24,14 @@ async function makeWithdraw (ammount: number, userInfo: UserLoggedDataProps, pas
         'http://localhost:8000/makeWithdraw',
         {
             method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.userLogged.token}` },
             body: JSON.stringify(body)
         }
     );
 
     const responseJson = await fetchResponse.json();
+
+    checkIfTokenIsExpired(responseJson.message, userInfo);
 
     return responseJson;
 }

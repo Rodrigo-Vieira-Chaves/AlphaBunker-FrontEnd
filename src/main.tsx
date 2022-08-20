@@ -3,14 +3,14 @@ import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { UserLoggedDataProvider } from './providers/UserLoggedDataProvider';
+import { UserDataProvider } from './providers/UserDataProvider';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
-        <UserLoggedDataProvider>
+        <UserDataProvider>
             <BrowserRouter>
                 <App />
             </BrowserRouter>
-        </UserLoggedDataProvider>
+        </UserDataProvider>
     </React.StrictMode>
 );

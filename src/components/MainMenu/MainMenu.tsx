@@ -2,14 +2,14 @@ import { Icon } from '../Icon';
 import { MainMenuAccountInfoBox } from './MainMenuAccountInfoBox';
 import { MainMenuBackGround } from './MainMenuBackGround';
 import { MainMenuButton } from './MainMenuButton';
-import { UserLoggedDataContext } from '../../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../../providers/UserDataProvider';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function MainMenu ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     return (
         <MainMenuBackGround className="relative">

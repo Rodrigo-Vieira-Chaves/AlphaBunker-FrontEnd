@@ -1,6 +1,7 @@
-import { UserLoggedDataProps } from '../providers/UserLoggedDataProvider';
+import { UserDataProps } from '../providers/UserDataProvider';
+import { checkIfTokenIsExpired } from '../utils/checkIfTokenIsExpired';
 
-async function makeDeposit (ammount: number, userInfo: UserLoggedDataProps)
+async function makeDeposit (ammount: number, userInfo: UserDataProps)
 {
     const body =
     {
@@ -22,12 +23,14 @@ async function makeDeposit (ammount: number, userInfo: UserLoggedDataProps)
         'http://localhost:8000/makeDeposit',
         {
             method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${userInfo.userLogged.token}` },
             body: JSON.stringify(body)
         }
     );
 
     const responseJson = await fetchResponse.json();
+
+    checkIfTokenIsExpired(responseJson.message, userInfo);
 
     return responseJson;
 }

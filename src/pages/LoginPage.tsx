@@ -8,14 +8,14 @@ import { CPFInput } from '../components/Inputs/CPFInput';
 import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
 import { PasswordInput } from '../components/Inputs/PasswordInput';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { authenticateUser } from '../apiCalls/authenticateUser';
 
 function LoginPage ()
 {
     const navigate = useNavigate();
 
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     const modalRef = useRef({} as ModalReferenceType);
     const cpfInputRef = useRef({} as InputReferenceType);

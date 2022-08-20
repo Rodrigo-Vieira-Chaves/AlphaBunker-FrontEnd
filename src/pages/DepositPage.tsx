@@ -7,14 +7,14 @@ import { Button } from '../components/Button';
 import { CurrencyInput } from '../components/Inputs/CurrencyInput';
 import { FormsBox } from '../components/FormsBox';
 import { InputReferenceType } from '../components/Inputs/InputReferenceType';
-import { UserLoggedDataContext } from '../providers/UserLoggedDataProvider';
+import { UserDataContext } from '../providers/UserDataProvider';
 import { makeDeposit } from '../apiCalls/makeDeposit';
 import { useNavigate } from 'react-router-dom';
 
 function DepositPage ()
 {
     const navigate = useNavigate();
-    const userInfo = useContext(UserLoggedDataContext);
+    const userInfo = useContext(UserDataContext);
 
     const modalRef = useRef({} as ModalReferenceType);
     const currencyInputRef = useRef({} as InputReferenceType);
@@ -48,7 +48,7 @@ function DepositPage ()
 
         currencyInputRef.current.setValue('0.00');
 
-        userInfo.updateUserInfo();
+        userInfo.updateUserLogged();
         userInfo.setLastTransaction(depositResponse.data);
 
         navigate('/main/receipt');
